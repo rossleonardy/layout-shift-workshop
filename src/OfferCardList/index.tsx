@@ -17,7 +17,7 @@ interface OfferCardProps {
 }
 
 export const OfferCard = ({uuid}: OfferCardProps) => {
-  const { loading, error, data} = useFetch<Offer>(`http://localhost:8787/offer/${uuid}`, {}, [])
+  const { loading, error, data } = useFetch<Offer>(`http://localhost:8787/offer/${uuid}`, {}, [])
 
   if (loading) {
     return <div>Loading</div>
@@ -51,10 +51,11 @@ export const OfferCard = ({uuid}: OfferCardProps) => {
 }
 
 export const OfferCardList = () => {
-  const { loading, error, data = [] } = useFetch<string[]>('http://localhost:8787/offerList', {}, [])
+  const { loading, error, data } = useFetch<string[]>('http://localhost:8787/offerList', {}, [])
+
   if (loading) {
     return <div>Loading</div>
-  } else if (error) {
+  } else if (!data || error) {
     return <div>Error</div>
   } else {
     return <div className="offerCardList">

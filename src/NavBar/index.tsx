@@ -11,4 +11,4 @@ export const NavBar = () => <div className="navbar">
     <li>FAQ</li>
     <li>Developers</li>
   </ul>
-  </div>
+</div>

@@ -4,7 +4,7 @@ import cors from 'cors'
 import { createWordMark } from './wordmark'
 
 const app = express()
-const port = 8787
+const PORT = 8787
 
 const SLOW = process.env.SLOW === 'true'
 const RANDOM = process.env.RANDOM === 'true'
@@ -81,6 +81,6 @@ app.get('/wordmark/:uuid', (req, res) => {
   res.send(createWordMark(seedFromUuid(req.params.uuid)))
 })
 
-app.listen(port, () => {
-  console.log('Listening')
+app.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`)
 })
