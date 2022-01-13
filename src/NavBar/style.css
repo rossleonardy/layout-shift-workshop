@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+  padding: 0px 32px;
+}
+
+.navbar div {
+  font-weight: bold;
+  padding: 0px 24px;
+  font-size: 2em;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar li {
+  display: flex;
+  padding: 0px 24px;
+}
+
+.workshop {
+  display: block;
+}
+
+.workshop.small {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    padding: 0px 16px;
+  }
+
+  .navbar li {
+    padding: 0px 8px;
+  }
+
+  .workshop {
+    display: none;
+  }
+
+  .workshop.small {
+    display: block;
+  }
+}

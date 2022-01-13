@@ -1,0 +1,23 @@
+{
+  "name": "cms-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "SLOW=true ts-node --project tsconfig.json index.ts",
+    "start-random": "RANDOM=true ts-node --project tsconfig.json index.ts",
+    "start-fast": "ts-node --project tsconfig.json index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^5.5.3",
+    "@types/cors": "^2.8.12",
+    "@types/faker": "^5.5.9",
+    "canvas": "^2.8.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "ts-node": "^10.4.0"
+  }
+}

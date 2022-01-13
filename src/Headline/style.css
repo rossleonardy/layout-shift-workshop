@@ -1,0 +1,14 @@
+.headline {
+  padding: 0px 32px;
+  max-width: 900px;
+}
+
+@media screen and (max-width: 600px) {
+  .headline h1 {
+    font-size: 1em;
+  }
+
+  .headline h5 {
+    display: none;
+  }
+}
