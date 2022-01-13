@@ -1,14 +1,24 @@
 .headline {
   padding: 0px 32px;
   max-width: 900px;
+  min-height: 160px;
 }
 
 @media screen and (max-width: 600px) {
+  .headline {
+    min-height: 40px;
+  }
   .headline h1 {
     font-size: 1em;
   }
 
   .headline h5 {
     display: none;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .headline {
+    min-height: 60px;
   }
 }
