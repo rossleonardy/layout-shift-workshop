@@ -1,4 +1,5 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import useFetch from 'use-http'
 
 import './style.css'
@@ -16,18 +17,26 @@ interface OfferCardProps {
   uuid: string
 }
 
-export const OfferCard = ({uuid}: OfferCardProps) => {
-  const { loading, error, data } = useFetch<Offer>(`http://localhost:8787/offer/${uuid}`, {}, [])
+export const OfferCard = ({ uuid }: OfferCardProps) => {
+  const { loading, error, data } = useFetch<Offer>(
+    `http://localhost:8787/offer/${uuid}`,
+    {},
+    []
+  )
 
   if (loading) {
-    return <div>Loading</div>
+    return <OfferCardSkeleton />
   } else if (!data || error) {
     return <div>Error</div>
   } else {
-    return <div className="offerCard">
-      <div className="flag">{data.flag}</div>
-      <div className="offerBody">
-        <img className="wordmark" src={`http://localhost:8787/wordmark/${uuid}`} />
+    return (
+      <div className="offerCard">
+        <div className="flag">{data.flag}</div>
+        <div className="offerBody">
+          <img
+            className="wordmark"
+            src={`http://localhost:8787/wordmark/${uuid}`}
+          />
           <div className="amount">
             <h4>Amount</h4>
             <div>{data.amount}</div>
@@ -42,24 +51,48 @@ export const OfferCard = ({uuid}: OfferCardProps) => {
           </div>
           <div className="continue">CONTINUE</div>
           <div className="callouts">
-            {data.callouts.map((callout, i) => <div key={i} className="calloutPill">{callout}</div>)}
+            {data.callouts.map((callout, i) => (
+              <div key={i} className="calloutPill">
+                {callout}
+              </div>
+            ))}
           </div>
+        </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
+    )
   }
 }
 
+const OfferCardSkeleton = () => (
+  <div className="offerCard">
+    <Skeleton containerClassName="flag" />
+    <Skeleton containerClassName="offerBody" />
+  </div>
+)
+
 export const OfferCardList = () => {
-  const { loading, error, data } = useFetch<string[]>('http://localhost:8787/offerList', {}, [])
+  const { loading, error, data } = useFetch<string[]>(
+    'http://localhost:8787/offerList',
+    {},
+    []
+  )
 
   if (loading) {
-    return <div>Loading</div>
+    return (
+      <div className="offerCardList">
+        {Array(10).fill(<OfferCardSkeleton />)}
+      </div>
+    )
   } else if (!data || error) {
     return <div>Error</div>
   } else {
-    return <div className="offerCardList">
-      {data.map((uuid) => <OfferCard uuid={uuid} key={uuid} />)}
-    </div>
+    return (
+      <div className="offerCardList">
+        {data.map((uuid) => (
+          <OfferCard uuid={uuid} key={uuid} />
+        ))}
+      </div>
+    )
   }
 }
