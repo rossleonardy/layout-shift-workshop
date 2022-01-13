@@ -26,7 +26,7 @@
     grid-template-rows: 5fr 3fr;
     grid-column-gap: 8px;
     grid-row-gap: 8px;
-    grid-template-areas: 
+    grid-template-areas:
     "wordmark wordmark amount term monthly continue"
     "wordmark wordmark callouts callouts callouts callouts";
     text-align: center;
@@ -39,6 +39,10 @@
 .wordmark, .amount, .term, .monthly, .callouts, .continue {
   justify-self: center;
   align-self: center;
+}
+
+.flag, .amount, .term, .monthly, .term {
+  min-height: 16px;
 }
 
 .wordmark {
@@ -83,11 +87,12 @@
   margin: 0px 8px;
   padding: 4px 12px;
   border-radius: 10px;
+  min-height: 16px;
 }
 
 @media screen and (max-width: 600px) {
   .wordmark {
-    max-height: 80px;
+    height: 80px;
   }
 
   .offerBody {
@@ -97,7 +102,7 @@
     grid-template-rows: 1fr 60px 40px 60px;
     grid-column-gap: 8px;
     grid-row-gap: 8px;
-    grid-template-areas: 
+    grid-template-areas:
     "wordmark wordmark wordmark"
     "amount term monthly"
     "callouts callouts callouts"
